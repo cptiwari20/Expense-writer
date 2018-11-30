@@ -5,7 +5,7 @@ const store = createStore((state = { count: 1}, action) => {
     case 'INCREMENT':
       return { count: state.count + 1 };
     case 'DECREMENT':
-      return { count: state.count - 1 };
+      return { anything: state.count - 1 };
     case 'RESET':
       return { count: 1 };
     default:
@@ -13,16 +13,21 @@ const store = createStore((state = { count: 1}, action) => {
   }
 })
 console.log(store.getState());
-//actions 
-// store.dispatch({
-//   type: 'INCREMENT'
-// });
+
+
+// actions 
+
+
+store.dispatch({
+  type: 'INCREMENT'
+});
 
 store.dispatch({
   type: 'DECREMENT'
 });
-// store.dispatch({
-//   type: "RESET"
-// });
+store.dispatch({
+  type: "RESET"
+});
 
+// gettting the store value
 console.log(store.getState());
