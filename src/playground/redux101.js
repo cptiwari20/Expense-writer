@@ -3,7 +3,8 @@ import { createStore} from 'redux';
 const store = createStore((state = { count: 1}, action) => {
   switch (action.type){
     case 'INCREMENT':
-      return { count: state.count + 1 };
+      const val = typeof action.incrementBy === 'number' ? action.incrementBy : 1;
+      return { count: state.count + val };
     case 'DECREMENT':
       return { anything: state.count - 1 };
     case 'RESET':
@@ -25,11 +26,12 @@ store.dispatch({
 
 });
 store.dispatch({
-  type: 'INCREMENT'
+  type: 'INCREMENT',
+  incrementBy: 10
 });
 
 // unsubscribe the store by running the value out of store as a function
-unsubscribe();
+// unsubscribe();
 
 store.dispatch({
   type: 'DECREMENT'
