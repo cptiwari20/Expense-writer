@@ -16,13 +16,20 @@ const store = createStore((state = { count: 1}, action) => {
 
 // actions 
 
-store.subscribe(() => {
+const unsubscribe = store.subscribe(() => {
   return console.log(store.getState());
 });
 
 store.dispatch({
   type: 'INCREMENT'
+
 });
+store.dispatch({
+  type: 'INCREMENT'
+});
+
+// unsubscribe the store by running the value out of store as a function
+unsubscribe();
 
 store.dispatch({
   type: 'DECREMENT'
