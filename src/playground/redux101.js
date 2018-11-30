@@ -12,11 +12,13 @@ const store = createStore((state = { count: 1}, action) => {
       return state;
   }
 })
-console.log(store.getState());
 
 
 // actions 
 
+store.subscribe(() => {
+  return console.log(store.getState());
+});
 
 store.dispatch({
   type: 'INCREMENT'
@@ -30,4 +32,4 @@ store.dispatch({
 });
 
 // gettting the store value
-console.log(store.getState());
+// console.log(store.getState());
