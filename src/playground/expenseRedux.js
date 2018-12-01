@@ -1,11 +1,16 @@
-// import { createStore, combineReducers } from 'redux';
-// import uuid from 'uuid';
-const { createStore, combineReducers } = require('redux');
-const uuid = require('uuid');
-
-
+import { createStore, combineReducers } from 'redux';
+import uuid from 'uuid';
+// const { createStore, combineReducers } = require('redux');
+// const uuid = require('uuid');
 
 // expense
+
+const deleteExpense =(id) => {
+  return {
+    type: 'DELETE_EXPENSE',
+    id
+  }
+}
 
 // add exxpense action Creator
 const addExpense = ({
@@ -22,18 +27,21 @@ const addExpense = ({
   }
 };
 
+
 // reducer
-const addExpenseReducer = (state = {}, action) =>{
+const expenseReducer = ( state = [], action) =>{
   switch (action.type){
     case 'ADD_EXPENSE':
-      return { ...state, Expense: action.payload };
+      return [ ...state, action.payload ];
+    case 'DELETE_EXPENSE': 
+      return state.filter(({id}) => id !== action.id);
     default:
       return state;
   }
 };
 // Redux Store
 const store = createStore(combineReducers({
-  addExpense: addExpenseReducer 
+  expenses: expenseReducer 
 }))
 
 // subscribe
@@ -42,4 +50,9 @@ const unsubscribe = store.subscribe(() => {
 })
 
 // dispatch an action
-store.dispatch(addExpense({description: 'Rent', amount: 20, note:'this is my first expense'}));
+const expenseOne = store.dispatch(addExpense({description: 'Rent', amount: 20, note:'this is my first expense'}));
+const expenseTwo = store.dispatch(addExpense({description: 'Clothes', amount: 2000, note:'this is my second expense'}));
+
+store.dispatch(deleteExpense(expenseOne.payload.id));
+
+// console.log(store.getState())
