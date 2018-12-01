@@ -110,6 +110,13 @@ const getVisibleExpenses = ( expenses, {text, endDate, startDate, sortBy} ) => {
             expense.description.toLowerCase().includes(text.toLowerCase())
 
     return startDateMatch && endDateMatch && textMatch;
+  }).sort((a, b) => {
+    if(sortBy === 'date'){
+     return a.createdAt > b.createdAt ? 1 : -1;
+    }
+    if(sortBy === 'amount'){
+      return a.amount < b.amount ? 1 : -1;
+    }
   })
   
 }
@@ -133,8 +140,8 @@ store.dispatch(addExpense({description: 'reacharge', amount: 100, note:'this is 
 // console.log(store.getState())
 
 // store.dispatch(sortByText('ren'));
-// store.dispatch(sortByDate());
-// store.dispatch(sortByAmount());
+store.dispatch(sortByDate());
+store.dispatch(sortByAmount());
 
-store.dispatch(sortByStartDate(2016));
-store.dispatch(sortByEndDate(2018));
+// store.dispatch(sortByStartDate(2016));
+// store.dispatch(sortByEndDate(2018));
