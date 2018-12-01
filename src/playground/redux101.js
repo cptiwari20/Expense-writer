@@ -1,5 +1,7 @@
 // import { createStore } from 'redux';
-const createStore = require('redux').createStore; // for testing inside the node.
+const { createStore } = require('redux');// for testing inside the node.
+const { combineReducers } = require('redux'); // for testing inside the node.
+
 
 const increase = () => {
   return { type: 'INCREMENT' }
@@ -27,7 +29,11 @@ const numberReducer = (state = { count: 0}, action) => {
       return state;
   }
 }
-const store = createStore(numberReducer)
+const store = createStore(
+  combineReducers({
+    numbers: numberReducer
+  })
+)
 
 
 // actions 
