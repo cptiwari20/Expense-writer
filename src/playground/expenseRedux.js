@@ -101,21 +101,40 @@ const store = createStore(combineReducers({
   filters: filterReducer 
 }));
 
+const getVisibleExpenses = ( expenses, {text, endDate, startDate, sortBy} ) => {
+  return expenses.filter((expense)=> {
+    const startDateMatch =  typeof startDate !== 'number' || expense.createdAt >= startDate ;
+    const endDateMatch = typeof endDate !== 'number' || expense.createdAt <= endDate;
+    const textMatch = 
+            !text || 
+            expense.description.toLowerCase().includes(text.toLowerCase())
+
+    return startDateMatch && endDateMatch && textMatch;
+  })
+  
+}
 // subscribe
 const unsubscribe = store.subscribe(() => {
-  return console.log(store.getState())
+  const state = store.getState();
+  const visibleExpenses = getVisibleExpenses(state.expenses, state.filters)
+  return console.log(visibleExpenses);
 })
 
+
 // dispatch an action
-// const expenseOne = store.dispatch(addExpense({description: 'Rent', amount: 20, note:'this is my first expense'}));
-// const expenseTwo = store.dispatch(addExpense({description: 'Clothes', amount: 2000, note:'this is my second expense'}));
+const expenseOne = store.dispatch(addExpense({description: 'Rent', amount: 20, note:'this is my first expense', createdAt: 2015}));
+const expenseTwo = store.dispatch(addExpense({description: 'Clothes', amount: 2000, note:'this is my second expense', createdAt: 2008}))
+store.dispatch(addExpense({description: 'Roommate', amount: 4000, note:'this is my second expense', createdAt: 2017}))
+store.dispatch(addExpense({description: 'mouse', amount: 350, note:'this is my second expense', createdAt: 2016}))
+store.dispatch(addExpense({description: 'reacharge', amount: 100, note:'this is my second expense', createdAt: 2019}))
 
 // store.dispatch(deleteExpense(expenseOne.payload.id));
 
 // console.log(store.getState())
 
-store.dispatch(sortByText('RENT'));
-store.dispatch(sortByDate());
-store.dispatch(sortByAmount());
-store.dispatch(sortByStartDate(2015));
+// store.dispatch(sortByText('ren'));
+// store.dispatch(sortByDate());
+// store.dispatch(sortByAmount());
+
+store.dispatch(sortByStartDate(2016));
 store.dispatch(sortByEndDate(2018));
