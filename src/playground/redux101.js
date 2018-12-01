@@ -13,7 +13,8 @@ const decrement = () => {
 const reset = () => {
   return { type: 'RESET' }
 }
-const store = createStore((state = { count: 0}, action) => {
+
+const numberReducer = (state = { count: 0}, action) => {
   switch (action.type){
     case 'INCREMENT':
       const val = typeof action.incrementBy === 'number' ? action.incrementBy : 1;
@@ -25,7 +26,8 @@ const store = createStore((state = { count: 0}, action) => {
     default:
       return state;
   }
-})
+}
+const store = createStore(numberReducer)
 
 
 // actions 
@@ -35,7 +37,7 @@ const unsubscribe = store.subscribe(() => {
 });
 
 // store.dispatch(increase());
-// store.dispatch(increasedBy(3));
+store.dispatch(increasedBy(3));
 
 // unsubscribe the store by running the value out of store as a function
 // unsubscribe();
@@ -43,7 +45,7 @@ const unsubscribe = store.subscribe(() => {
 // store.dispatch({
 //   type: 'DECREMENT'
 // });
-store.dispatch(reset());
+// store.dispatch(reset());
 
 // gettting the store value
 // console.log(store.getState());
