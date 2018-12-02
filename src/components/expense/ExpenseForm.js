@@ -25,6 +25,10 @@ class ExpenseForm extends Component {
      return this.setState( { amount })
     }
   }
+
+  handleSubmit = () => {
+    return this.props.addExpense(this.state)
+  }
   render(){
     return (
       <form onSubmit={this.handleSubmit}>
@@ -52,7 +56,8 @@ class ExpenseForm extends Component {
           placeholder='Note'
           value={this.state.note}
           onChange={e => this.setState({note: e.target.value})}  
-        ></textarea>
+        >
+        </textarea>
         <button type='submit'>Submit</button>
       </form>
     )
