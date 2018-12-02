@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import { Provider } from 'react-redux';
 import AppRoutes from './router/AppRoutes';
 import configureStore from './store/configureStore';
 import getVisibleExpenses from './selectors/visibleExpenses';
@@ -23,4 +23,7 @@ store.dispatch(addExpense({description: 'reacharge', amount: 100, note:'this is 
 store.dispatch(sortByText('roo'))
 // console.log(actions);
 
-ReactDOM.render(<AppRoutes />, document.querySelector('#app'));
+ReactDOM.render(
+  <Provider store={configStore}>
+    <AppRoutes />
+  </Provider>, document.querySelector('#app'));
