@@ -9,4 +9,16 @@ const Profile = (props) => (
   </div>
 );
 
-ReactDOM.render(<Profile name='vikas' />, document.getElementById('app'));
+const auth = (Children) => {
+  return (props) => {
+    return (
+      <div>
+      <h1>Yes you are authencated</h1>
+      <Children {...props}/>
+    </div>
+    )
+  }
+}
+const Auth = auth(Profile)
+
+ReactDOM.render(<Auth name='Aman'/>, document.getElementById('app'));
