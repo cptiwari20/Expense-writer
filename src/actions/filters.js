@@ -1,7 +1,7 @@
 // filters actions
-export const sortByText = (text) => {
+export const filterByText = (text) => {
   return {
-    type: 'SORT_BY_TEXT',
+    type: 'FILTER_BY_TEXT',
     text
   }
 }

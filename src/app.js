@@ -14,13 +14,13 @@ store.subscribe(() => {
   return console.log(visibleExpenses);
 });
 import {addExpense} from './actions/expenses';
-import {sortByText} from './actions/filters';
+import {filterByText} from './actions/filters';
 
 store.dispatch(addExpense({description: 'Roommate', amount: 4000, note:'this is my second expense', createdAt: 2017}))
 store.dispatch(addExpense({description: 'mouse', amount: 350, note:'this is my second expense', createdAt: 2016}))
 store.dispatch(addExpense({description: 'reacharge', amount: 100, note:'this is my second expense', createdAt: 2019}))
 
-store.dispatch(sortByText('roo'))
+store.dispatch(filterByText('m'))
 
 ReactDOM.render(
   <Provider store={store}>

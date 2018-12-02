@@ -9,7 +9,7 @@ const filterReducerDefaultState = {
 
 export default ( state = filterReducerDefaultState, action) =>{
   switch (action.type){
-    case 'SORT_BY_TEXT':
+    case 'FILTER_BY_TEXT':
       return { ...state, text: action.text };
     case 'SORT_BY_DATE': 
       return {... state, sortBy: 'date'};
