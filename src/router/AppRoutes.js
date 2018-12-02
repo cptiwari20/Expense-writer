@@ -6,12 +6,14 @@ import Dashboard from "../components/Dashboard";
 import ErrorPage from "../components/ErrorPage";
 import AddExpense from '../components/AddExpense';
 import About from "../components/About";
+import ExpenseList from '../components/expense/ExpenseList';
 
 const AppRoutes = () => (
   <BrowserRouter>
   <div>
     <Header />
       <Switch>
+        <Route path='/expense-list' component={ExpenseList} />
         <Route path="/about" component={About} />
         <Route path='/add-expense' component={AddExpense} />
         <Route path='/' component={Dashboard} exact/>

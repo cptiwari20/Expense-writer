@@ -31,11 +31,11 @@ const Header = () => (
         </NavLink>
       </li>
       <li>
-        <NavLink to='/nopafe'  activeStyle={{
+        <NavLink to='/expense-list'  activeStyle={{
           fontWeight: "bold",
           color: "red"
         }}>
-        Nor Page
+        Expense List
         </NavLink>
       </li>
     </ul>
