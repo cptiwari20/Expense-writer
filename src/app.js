@@ -21,9 +21,8 @@ store.dispatch(addExpense({description: 'mouse', amount: 350, note:'this is my s
 store.dispatch(addExpense({description: 'reacharge', amount: 100, note:'this is my second expense', createdAt: 2019}))
 
 store.dispatch(sortByText('roo'))
-// console.log(actions);
 
 ReactDOM.render(
-  <Provider store={configStore}>
+  <Provider store={store}>
     <AppRoutes />
   </Provider>, document.querySelector('#app'));
