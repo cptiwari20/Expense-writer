@@ -31,12 +31,6 @@ const Header = () => (
         </NavLink>
       </li>
       <li>
-        <NavLink to='/expense-list'  activeStyle={{
-          fontWeight: "bold",
-          color: "red"
-        }}>
-        Expense List
-        </NavLink>
       </li>
     </ul>
   </nav>
