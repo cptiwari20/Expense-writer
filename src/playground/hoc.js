@@ -11,14 +11,17 @@ const Profile = (props) => (
 
 const auth = (Children) => {
   return (props) => {
+    if(props.isAuth === true){
     return (
       <div>
       <h1>Yes you are authencated</h1>
       <Children {...props}/>
     </div>
     )
+    }
+    return <p>Please Loggin!</p>
   }
 }
 const Auth = auth(Profile)
 
-ReactDOM.render(<Auth name='Aman'/>, document.getElementById('app'));
+ReactDOM.render(<Auth name='Aman' isAuth={false}/>, document.getElementById('app'));
