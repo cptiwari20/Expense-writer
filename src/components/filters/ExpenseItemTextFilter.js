@@ -1,10 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {filterByName} from '../../actions/filters';
+import {filterByText} from '../../actions/filters';
 
 const NameFilterInput = ({dispatch}) => (
   <div>
-    <input onChange={ e => dispatch(filterByName(e.target.value)) }/>
+    <input onChange={ e => dispatch(filterByText(e.target.value)) }/>
   </div>
 );
 

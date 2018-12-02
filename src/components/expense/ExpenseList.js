@@ -1,11 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ExpenseListItem from './ExpenseListItem';
+import FilterNameInput from '../filters/ExpenseItemTextFilter';
 import getVisibleExpenses from '../../selectors/visibleExpenses';
 
 const ExpenseList = (props) => (
   <div>
     <h3>Expenses</h3>
+    <FilterNameInput />
     <table border="1">
     <tbody>
     {props.expenses.map((expense, i) =>(
