@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ExpenseForm from './ExpenseForm';
+import { editExpense } from '../../actions/expenses';
 
 class EditExpense extends Component {
   render(){
@@ -8,7 +9,12 @@ class EditExpense extends Component {
     return(
       <div>
         <h2>Edit your Expense</h2>
-        <ExpenseForm expense={this.props.expense}  />
+        <ExpenseForm 
+            expense={this.props.expense}
+            onSubmit = { (id, updates) => {
+              this.props.editExpense(id, updates);
+              this.props.history.push('/')
+            } }  />
       </div>
     )
   }
@@ -18,4 +24,4 @@ const mapStateToProps = ({expenses}, ownProps) => {
     expense: expenses.find(expense => expense.id === ownProps.match.params.id)
   }
 }
-export default connect(mapStateToProps)(EditExpense);
+export default connect(mapStateToProps, {editExpense})(EditExpense);
