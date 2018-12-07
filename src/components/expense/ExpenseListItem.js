@@ -1,10 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { deleteExpense } from '../../actions/expenses';
 
 const ExpenseListItem = ({dispatch, description, amount, note, createdAt, id}) => (
   <tr>
-    <td><h2>{description}</h2></td>
+    <td>
+    <Link to={`/edit/${id}`}>
+     <h2>{description}</h2>
+    </Link>
+    </td>
     <td><h3>{amount}</h3></td>
     <td><p>{note}</p></td>
     <td><span>{createdAt}</span></td>
