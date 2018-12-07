@@ -8,7 +8,10 @@ class AddExpense extends Component{
     return(
       <div>
         <h2>Add Your New Expense.</h2>
-        <ExpenseForm onSubmit={(expense) => console.log(expense)}/>
+        <ExpenseForm onSubmit={(expense) => {
+          this.props.addExpense(expense);
+          this.props.history.push('/');
+        }}/>
         </div>
     )
   }
