@@ -11,9 +11,10 @@ class ExpenseForm extends Component {
     amount: 0,
     note: '',
     createdAt: moment(),
-    calenderFocused: false
+    calenderFocused: false,
+    error: ''
   } 
-  onDateChange = ({ createdAt }) => (
+  onDateChange = (createdAt) => (
     this.setState({ createdAt })
   )
   onFocusChange = ({ focused }) => {
@@ -21,16 +22,29 @@ class ExpenseForm extends Component {
   }
   onAmountChange = e => {
     const amount = e.target.value;
-    if(amount.match(/^\d*(\.\d{0,2})?$/)){
+    if(!amount || amount.match(/^\d{1,}(\.\d{0,2})?$/)){
      return this.setState( { amount })
     }
   }
 
-  handleSubmit = () => {
-    return this.props.addExpense(this.state)
+  handleSubmit = (e) => {
+    e.preventDefault();
+    if(!this.state.description || !this.state.amount){
+      return this.setState({error: 'Please provide some description and amount!'})
+    }
+    this.setState({error: ''});
+    let { description, createdAt, amount, note} = this.state
+    this.props.onSubmit({
+      description,
+      createdAt: createdAt.valueOf(),
+      amount: parseFloat(amount, 10) * 100,
+      note
+    });
   }
   render(){
     return (
+      <div>
+        {this.state.error && <p>{this.state.error}</p>}
       <form onSubmit={this.handleSubmit}>
         <input 
           type='text'
@@ -60,6 +74,7 @@ class ExpenseForm extends Component {
         </textarea>
         <button type='submit'>Submit</button>
       </form>
+      </div>
     )
   }
 }
