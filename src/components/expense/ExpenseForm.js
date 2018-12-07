@@ -4,16 +4,20 @@ import 'react-dates/initialize';
 import { SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 
-console.log(moment())
 class ExpenseForm extends Component {
-  state = {
-    description: '',
-    amount: 0,
-    note: '',
-    createdAt: moment(),
-    calenderFocused: false,
-    error: ''
-  } 
+  constructor(props){
+    super(props);
+    const { expense } = props
+    this.state = {
+      description: expense ? expense.description : '',
+      amount: expense ? expense.amount : '',
+      note: expense ? (expense.note / 100).toString() : '',
+      createdAt: expense ? moment(expense.createdAt) : moment(),
+      calenderFocused: false,
+      error: ''
+    }  
+  }
+   
   onDateChange = (createdAt) => (
     this.setState({ createdAt })
   )
