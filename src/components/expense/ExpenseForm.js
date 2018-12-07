@@ -10,8 +10,8 @@ class ExpenseForm extends Component {
     const { expense } = props
     this.state = {
       description: expense ? expense.description : '',
-      amount: expense ? expense.amount : '',
-      note: expense ? (expense.note / 100).toString() : '',
+      amount: expense ? (expense.amount / 100).toString() : '',
+      note: expense ? expense.note : '',
       createdAt: expense ? moment(expense.createdAt) : moment(),
       calenderFocused: false,
       error: ''
