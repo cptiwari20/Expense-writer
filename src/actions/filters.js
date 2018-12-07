@@ -17,13 +17,13 @@ export const sortByAmount = () => {
 }
 export const sortByStartDate = (fromDate) => {
   return {
-    type: 'SORT_BY_START_DATE',
+    type: 'SET_START_DATE',
     startDate: fromDate
   }
 }
 export const sortByEndDate = (toDate) => {
   return {
-    type: 'SORT_BY_END_DATE',
+    type: 'SET_END_DATE',
     endDate: toDate
   }
 }
