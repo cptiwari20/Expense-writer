@@ -5,12 +5,13 @@ import AppRoutes from './router/AppRoutes';
 import configureStore from './store/configureStore';
 import 'normalize.css/normalize.css';
 import './styles/style.scss';
+import moment from 'moment';
 
 const store = configureStore();
 import {addExpense} from './actions/expenses';
-store.dispatch(addExpense({description: 'Roommate', amount: 4000, note:'this is my second expense', createdAt: 2017}))
-store.dispatch(addExpense({description: 'mouse', amount: 350, note:'this is my second expense', createdAt: 2016}))
-store.dispatch(addExpense({description: 'reacharge', amount: 100, note:'this is my second expense', createdAt: 2019}))
+store.dispatch(addExpense({description: 'Roommate', amount: 4000, note:'this is my second expense', createdAt: moment()}))
+store.dispatch(addExpense({description: 'mouse', amount: 350, note:'this is my second expense', createdAt: moment()}))
+store.dispatch(addExpense({description: 'reacharge', amount: 100, note:'this is my second expense', createdAt: moment()}))
 
 ReactDOM.render(
   <Provider store={store}>
