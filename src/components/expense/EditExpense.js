@@ -8,7 +8,7 @@ class EditExpense extends Component {
     return(
       <div>
         <h2>Edit your Expense</h2>
-        <ExpenseForm expense={this.props.expense} />
+        <ExpenseForm expense={this.props.expense}  />
       </div>
     )
   }
