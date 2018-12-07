@@ -3,7 +3,7 @@ export default ( state = [], action) =>{
     case 'ADD_EXPENSE':
       return [ ...state, action.payload ];
     case 'EDIT_EXPENSE':
-      state.map(expense => {
+      return state.map(expense => {
         if(expense.id === action.payload.id){
           return {
             ...expense,

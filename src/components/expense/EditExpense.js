@@ -11,8 +11,8 @@ class EditExpense extends Component {
         <h2>Edit your Expense</h2>
         <ExpenseForm 
             expense={this.props.expense}
-            onSubmit = { (id, updates) => {
-              this.props.editExpense(id, updates);
+            onSubmit = { (updates) => {
+              this.props.editExpense(this.props.expense.id, updates);
               this.props.history.push('/')
             } }  />
       </div>
