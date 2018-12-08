@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render Header correctly 1`] = `
+<nav>
+  <h1>
+    Expense Writer
+  </h1>
+  <ul>
+    <li>
+      <NavLink
+        activeClassName="active"
+        activeStyle={
+          Object {
+            "color": "red",
+            "fontWeight": "bold",
+          }
+        }
+        aria-current="page"
+        exact={true}
+        to="/"
+      >
+        Dashboard
+      </NavLink>
+    </li>
+    <li>
+      <NavLink
+        activeClassName="active"
+        activeStyle={
+          Object {
+            "color": "red",
+            "fontWeight": "bold",
+          }
+        }
+        aria-current="page"
+        to="/add-expense"
+      >
+        Create
+      </NavLink>
+    </li>
+    <li>
+      <NavLink
+        activeClassName="active"
+        activeStyle={
+          Object {
+            "color": "red",
+            "fontWeight": "bold",
+          }
+        }
+        aria-current="page"
+        to="/about"
+      >
+        About
+      </NavLink>
+    </li>
+    <li />
+  </ul>
+</nav>
+`;
