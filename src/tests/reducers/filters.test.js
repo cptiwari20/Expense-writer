@@ -45,4 +45,12 @@ describe('Filters Reducers', () => {
     })
   });
 
+  it('should return the default state with no action type', () => {
+    const action = {type: '$$@@MYONE'};
+    const newState = filterReducer(defaultState, action);
+    expect(newState).toEqual({
+      ...defaultState
+    })
+  })
+
 })
