@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { deleteExpense } from '../../actions/expenses';
 import moment from 'moment';
 
-const ExpenseListItem = ({dispatch, description, amount, note, createdAt, id}) => (
+export const ExpenseListItem = ({dispatch, description, amount, note, createdAt, id}) => (
   <tr>
     <td>
     <Link to={`/edit/${id}`}>

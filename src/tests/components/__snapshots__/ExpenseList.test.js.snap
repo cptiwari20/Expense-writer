@@ -12,7 +12,7 @@ exports[`Expense List should render a Expense list 1`] = `
     <tbody>
       <Connect(ExpenseListItem)
         amount={1000}
-        createdAt={"2019-12-09T08:57:58.745Z"}
+        createdAt={345600000}
         description="Mobile"
         id="1"
         key="0"
@@ -28,7 +28,7 @@ exports[`Expense List should render a Expense list 1`] = `
       />
       <Connect(ExpenseListItem)
         amount={2000}
-        createdAt={"2018-11-09T08:57:58.754Z"}
+        createdAt={-432000000}
         description="Headphone"
         id="3"
         key="2"

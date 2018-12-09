@@ -18,11 +18,11 @@ describe('VISIBLE EXPENSES', () => {
     const filters = {
       text: '',
       sortBy: 'date',
-      startDate: moment(),
+      startDate: moment(0),
       endDate: undefined
     }; 
     const visibleExpense = visibleExpenses(expenses, filters); 
-    expect(visibleExpense).toEqual([ expenses[0] ])
+    expect(visibleExpense).toEqual([ expenses[1], expenses[0] ])
   });
 
   it('should show the expenses sort by end date', () => {
@@ -30,10 +30,10 @@ describe('VISIBLE EXPENSES', () => {
       text: '',
       sortBy: 'date',
       startDate: undefined,
-      endDate: moment()
+      endDate: moment(0)
     }; 
     const visibleExpense = visibleExpenses(expenses, filters); 
-    expect(visibleExpense).toEqual([ expenses[1], expenses[2] ])
+    expect(visibleExpense).toEqual([ expenses[2], expenses[1] ])
   });
  
   it('should show the expenses sort by date', () => {
@@ -44,7 +44,7 @@ describe('VISIBLE EXPENSES', () => {
       endDate: undefined
     };
     const visibleExpense = visibleExpenses(expenses, filters); 
-    expect(visibleExpense).toEqual([ expenses[1], expenses[2], expenses[0] ])
+    expect(visibleExpense).toEqual([ expenses[2], expenses[1], expenses[0] ])
   });
 
   it('should show the expenses sort by amount', () => {

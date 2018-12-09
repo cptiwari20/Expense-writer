@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Expense List Item should return a list Item 1`] = `
+<tr>
+  <td>
+    <Link
+      replace={false}
+      to="/edit/undefined"
+    >
+      <h2 />
+    </Link>
+  </td>
+  <td>
+    <h3 />
+  </td>
+  <td>
+    <p />
+  </td>
+  <td>
+    <span>
+      9th Dec 2018
+    </span>
+  </td>
+  <td>
+    <button
+      onClick={[Function]}
+    >
+      Remove
+    </button>
+  </td>
+</tr>
+`;

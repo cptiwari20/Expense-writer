@@ -4,7 +4,7 @@ export default [ {
   id: '1',
   description: 'Mobile',
   note: '',
-  createdAt: moment().add(1, 'year'),
+  createdAt: moment(0).add(4, 'days').valueOf(),
   amount: 1000
 },
 {
@@ -17,6 +17,6 @@ export default [ {
   id: '3',
   description: 'Headphone',
   note: '',
-  createdAt: moment().subtract(1, 'month'),
+  createdAt: moment(0).subtract(5, 'days').valueOf(),
   amount: 2000
 }]
