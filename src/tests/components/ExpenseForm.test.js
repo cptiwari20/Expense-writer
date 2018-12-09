@@ -65,10 +65,16 @@ describe('Expense Form Handlers', () => {
 
   it('should set New Date onDateChange', () => {
     const now = moment(); //it is already mocked
-    console.log(wrapper.find('SingleDatePicker'))
     wrapper.find(SingleDatePicker).prop('onDateChange')(now);
     expect(wrapper.state('createdAt')).toBe(now);
+  });
+
+  it('should change focus onFocusChange', () => {
+    const focused = true;
+    wrapper.find(SingleDatePicker).prop('onFocusChange')({ focused });
+    expect(wrapper.state('calendarFocused')).toBe(focused);
   })
+
 
 });
 

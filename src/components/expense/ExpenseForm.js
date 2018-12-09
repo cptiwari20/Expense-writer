@@ -12,7 +12,7 @@ class ExpenseForm extends Component {
       amount: expense ? (expense.amount / 100).toString() : '',
       note: expense ? expense.note : '',
       createdAt: expense ? moment(expense.createdAt) : moment(),
-      calenderFocused: false,
+      calendarFocused: false,
       error: ''
     }  
   }
@@ -21,7 +21,7 @@ class ExpenseForm extends Component {
     this.setState({ createdAt })
   )
   onFocusChange = ({ focused }) => {
-    this.setState({ calenderFocused: focused})
+    this.setState({ calendarFocused: focused})
   }
   onAmountChange = e => {
     const amount = e.target.value;
@@ -64,7 +64,7 @@ class ExpenseForm extends Component {
         <SingleDatePicker 
           date={this.state.createdAt}
           onDateChange={this.onDateChange}
-          focused={this.state.calenderFocused}
+          focused={this.state.calendarFocused}
           onFocusChange={this.onFocusChange}
           numberOfMonths={1}
           isOutsideRange={() => false}
