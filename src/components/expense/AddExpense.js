@@ -17,4 +17,5 @@ export class AddExpense extends Component {
     )
   }
 }
-export default connect(null, { addExpense })(AddExpense);
+
+export default connect(null, {addExpense})(AddExpense);
