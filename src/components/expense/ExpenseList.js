@@ -4,9 +4,9 @@ import ExpenseListItem from './ExpenseListItem';
 import ExpenseItemFilters from '../filters/ExpenseItemFilters';
 import getVisibleExpenses from '../../selectors/visibleExpenses';
 
-const ExpenseList = (props) => (
+export const ExpenseList = (props) => (
   <div>
-    <h3>Expenses</h3>
+    <h3>Expenses List</h3>
     <ExpenseItemFilters />
     <table border="1">
     <tbody>

@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Expense List should render Expense list 1`] = `
+<div>
+  <h3>
+    Expenses List
+  </h3>
+  <Connect(NameFilterInput) />
+  <table
+    border="1"
+  >
+    <tbody>
+      <Connect(ExpenseListItem)
+        amount={1000}
+        createdAt={"2019-12-09T07:19:47.074Z"}
+        description="Mobile"
+        id="1"
+        key="0"
+        note=""
+      />
+      <Connect(ExpenseListItem)
+        amount={500}
+        createdAt={0}
+        description="Pen"
+        id="2"
+        key="1"
+        note=""
+      />
+      <Connect(ExpenseListItem)
+        amount={2000}
+        createdAt={"2018-11-09T07:19:47.087Z"}
+        description="Headphone"
+        id="3"
+        key="2"
+        note=""
+      />
+    </tbody>
+  </table>
+</div>
+`;
