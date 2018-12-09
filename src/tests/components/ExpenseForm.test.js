@@ -45,12 +45,20 @@ describe('Expense Form Handlers', () => {
     expect(wrapper.state('note')).toBe(text);
   });
 
-  it('should add an Amount', () => {
+  it('should add an Amount having valid input', () => {
     const value = '10.25';
     wrapper.find('input').at(1).simulate('change', {
       target: { value }
     });
     expect(wrapper.state('amount')).toBe(value);
+  });
+
+  it('should not add an invalid input for amount', () => {
+    const value = '10.255';
+    wrapper.find('input').at(1).simulate('change', {
+      target: { value }
+    });
+    expect(wrapper.state('amount')).toBe('');
   });
 })
 
