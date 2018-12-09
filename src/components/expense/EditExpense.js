@@ -1,20 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ExpenseForm from './ExpenseForm';
-import { editExpense } from '../../actions/expenses';
+import { editExpense, deleteExpense } from '../../actions/expenses';
 
 class EditExpense extends Component {
+  onSubmit = (updates) => (
+    this.props.editExpense(this.props.expense.id, updates);
+    this.props.history.push('/')
+  )
+  onRemove = () => (
+    this.props.deleteExpense({ id: this.props.expense.id });
+    this.props.history.push('/');
+  )
   render(){
-    console.log(this.props.expense)
     return(
       <div>
         <h2>Edit your Expense</h2>
         <ExpenseForm 
             expense={this.props.expense}
-            onSubmit = { (updates) => {
-              this.props.editExpense(this.props.expense.id, updates);
-              this.props.history.push('/')
-            } }  />
+            onSubmit = { this.onSubmit }  />
+        <button onClick={this.onRemove}>Remove Expense</button>
       </div>
     )
   }
@@ -24,4 +29,4 @@ const mapStateToProps = ({expenses}, ownProps) => {
     expense: expenses.find(expense => expense.id === ownProps.match.params.id)
   }
 }
-export default connect(mapStateToProps, {editExpense})(EditExpense);
+export default connect(mapStateToProps, {editExpense, deleteExpense})(EditExpense);
