@@ -27,6 +27,14 @@ describe('Expense Form Handlers', () => {
 
     expect(wrapper.state('error').length).toBeGreaterThan(0)
     expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should add a description', () => {
+    const text = 'New Test Description'
+    wrapper.find('input').at(0).simulate('change', {
+      target: {value: text}
+    });
+    expect(wrapper.state('description')).toBe(text);
   })
 })
 
