@@ -35,6 +35,22 @@ describe('Expense Form Handlers', () => {
       target: {value: text}
     });
     expect(wrapper.state('description')).toBe(text);
-  })
+  });
+
+  it('should add a Note', () => {
+    const text = 'New Test Note'
+    wrapper.find('textarea').simulate('change', {
+      target: {value: text}
+    });
+    expect(wrapper.state('note')).toBe(text);
+  });
+
+  it('should add an Amount', () => {
+    const value = '10.25';
+    wrapper.find('input').at(1).simulate('change', {
+      target: { value }
+    });
+    expect(wrapper.state('amount')).toBe(value);
+  });
 })
 
