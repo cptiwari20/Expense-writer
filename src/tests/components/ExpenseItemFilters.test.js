@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { DateRangePicker } from 'react-dates';
 import { ExpenseItemFilters } from '../../components/filters/ExpenseItemFilters';
 import { filters, altFilters } from '../fixtures/filters'
 
@@ -43,13 +44,6 @@ describe('Expense List Item Filters', () => {
     expect(filterByText).toHaveBeenLastCalledWith(text);
   });
 
-  it('should default sort by date', () => {
-    wrapper.find('select').simulate('change', {
-      target: { value: ''}
-    });
-    expect(sortByAmount).toHaveBeenCalled();
-  })
-
   it('should add sort by date', () => {
     wrapper.find('select').simulate('change', {
       target: { value: 'date'}
@@ -62,6 +56,27 @@ describe('Expense List Item Filters', () => {
       target: { value: 'amount'}
     });
     expect(sortByAmount).toHaveBeenCalled();
+  });
+
+  it('should sort by amount when there is no value', () => {
+    wrapper.find('select').simulate('change', {
+      target: { value: ''}
+    });
+    expect(sortByAmount).toHaveBeenCalled();
+  });
+
+  it('should add Start date and end date', () => {
+    wrapper.find(DateRangePicker).prop('onDatesChange')(altFilters);
+    expect(setStartDate).toHaveBeenLastCalledWith(altFilters.startDate);
+    expect(setEndDate).toHaveBeenLastCalledWith(altFilters.endDate);
+  });
+
+  it('should handle the onFocusChange', () => {
+    expect(wrapper.state('focusedInput')).toBe(null)
+    const focusedInput = 'kuchBhi';
+    wrapper.find(DateRangePicker).prop('onFocusChange')(focusedInput);
+    expect(wrapper.state('focusedInput')).toBe(focusedInput)
   })
+
 
 })
