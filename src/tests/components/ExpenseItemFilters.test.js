@@ -73,7 +73,7 @@ describe('Expense List Item Filters', () => {
 
   it('should handle the onFocusChange', () => {
     expect(wrapper.state('focusedInput')).toBe(null)
-    const focusedInput = 'kuchBhi';
+    const focusedInput = 'endDate';
     wrapper.find(DateRangePicker).prop('onFocusChange')(focusedInput);
     expect(wrapper.state('focusedInput')).toBe(focusedInput)
   })

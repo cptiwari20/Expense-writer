@@ -5,7 +5,7 @@ exports[`Expense List should render a Expense list 1`] = `
   <h3>
     Expenses List
   </h3>
-  <Connect(NameFilterInput) />
+  <Connect(ExpenseItemFilters) />
   <table
     border="1"
   >
@@ -44,7 +44,7 @@ exports[`Expense List should retrun no Expenses 1`] = `
   <h3>
     Expenses List
   </h3>
-  <Connect(NameFilterInput) />
+  <Connect(ExpenseItemFilters) />
   <table
     border="1"
   >
