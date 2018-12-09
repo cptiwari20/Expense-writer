@@ -3,14 +3,23 @@ import {connect} from 'react-redux';
 import { DateRangePicker } from 'react-dates';
 import {filterByText, sortByDate, sortByAmount, setStartDate, setEndDate } from '../../actions/filters';
 
-class NameFilterInput extends Component{
+export class ExpenseItemFilters extends Component{
 
   state = { focusedInput: null }
 
   handleDateChange = ({ startDate, endDate }) => {
-    this.props.dispatch(setStartDate(startDate));
-    this.props.dispatch(setEndDate(endDate))
+    this.props.setStartDate(startDate);
+    this.props.setEndDate(endDate);
+  };
+
+  onTextInputChange = e =>{
+    this.props.filterByText(e.target.value);
   }
+
+  onSelectOptionChange = e => {
+    e.target.value === 'date' ? this.props.sortByDate() : this.props.sortByAmount();
+  }
+
   render(){
     const {dispatch, filters} = this.props
     return (
@@ -18,11 +27,11 @@ class NameFilterInput extends Component{
         <input 
           type='text'
           value={filters.text}
-          onChange={ e => dispatch(filterByText(e.target.value)) }
+          onChange={ this.onTextInputChange }
         />
         <select 
           value={filters.sortBy}
-          onChange={ e=> dispatch(e.target.value === 'date' ? sortByDate() : sortByAmount())}
+          onChange={ this.onSelectOptionChange }
         >
           <option value='date'>Date</option>
           <option value='amount'>Amount</option>
@@ -49,4 +58,4 @@ const mapStateToProps = ({filters}) => {
   }
 }
 
-export default connect(mapStateToProps)(NameFilterInput)
+export default connect(mapStateToProps, {filterByText, sortByDate, sortByAmount, setStartDate, setEndDate })(ExpenseItemFilters)
