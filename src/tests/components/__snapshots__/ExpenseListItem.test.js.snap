@@ -5,20 +5,24 @@ exports[`Expense List Item should return a list Item 1`] = `
   <td>
     <Link
       replace={false}
-      to="/edit/undefined"
+      to="/edit/2"
     >
-      <h2 />
+      <h2>
+        Pen
+      </h2>
     </Link>
   </td>
   <td>
-    <h3 />
+    <h3>
+      500
+    </h3>
   </td>
   <td>
     <p />
   </td>
   <td>
     <span>
-      9th Dec 2018
+      1st Jan 1970
     </span>
   </td>
   <td>
