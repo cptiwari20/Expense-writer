@@ -14,6 +14,7 @@ beforeEach(() => {
     <EditExpense 
       editExpense={editExpense}
       d 
+      deleteExpense={deleteExpense}
       history={history} 
       expense={expenses[1]}
     />
@@ -26,10 +27,16 @@ describe('Edit Expense', () => {
   });
 
   it('should handle Edit Expense onSubmit', () => {
-    // const description = 'New Test Description';
     wrapper.find(ExpenseForm).prop('onSubmit')(expenses[1]);
 
     expect(history.push).toHaveBeenLastCalledWith('/');
     expect(editExpense).toHaveBeenLastCalledWith(expenses[1].id, expenses[1])
+  });
+
+  it('should handle Delete Expense onRemove', () => {
+    wrapper.find('button').simulate('click');
+
+    expect(history.push).toHaveBeenLastCalledWith('/');
+    expect(deleteExpense).toHaveBeenLastCalledWith({id: expenses[1].id})
   })
 })

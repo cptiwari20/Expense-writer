@@ -6,6 +6,15 @@ exports[`Edit Expense should show the Edit ExpensePage Correctly 1`] = `
     Edit your Expense
   </h2>
   <ExpenseForm
+    expense={
+      Object {
+        "amount": 500,
+        "createdAt": 0,
+        "description": "Pen",
+        "id": "2",
+        "note": "",
+      }
+    }
     onSubmit={[Function]}
   />
   <button
