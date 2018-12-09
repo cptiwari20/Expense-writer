@@ -1,16 +1,16 @@
 import React from "react";
-// import ReactShallowRenderer from "react-test-renderer/shallow";
-
 import { shallow } from 'enzyme';
+import  toJson from "enzyme-to-json";
 import Header from "../../components/Header";
 
 it('should render Header correctly', () => {
   const wrapper = shallow(<Header />);
+  expect(toJson(wrapper)).toMatchSnapshot()
+})
 
-  console.log("wrapper::", wrapper.find('h1'));
-  
-  // const renderer = new ReactShallowRenderer();
+// import ReactShallowRenderer from "react-test-renderer/shallow";
+
+ // const renderer = new ReactShallowRenderer();
   // renderer.render(<Header />);
 
   // expect(renderer.getRenderOutput()).toMatchSnapshot();
-})
