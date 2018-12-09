@@ -9,11 +9,17 @@ export const ExpenseList = (props) => (
     <h3>Expenses List</h3>
     <ExpenseItemFilters />
     <table border="1">
-    <tbody>
-    {props.expenses.map((expense, i) =>(
-      <ExpenseListItem key={i} {...expense} />
-    ))}
-    </tbody>
+    {
+      props.expenses.length === 0 ? (
+        <p>No Expese</p>
+      ) : (
+        <tbody>
+        {props.expenses.map((expense, i) =>(
+          <ExpenseListItem key={i} {...expense} />
+        ))}
+        </tbody>
+      )
+    }
     </table>
   </div>
 );

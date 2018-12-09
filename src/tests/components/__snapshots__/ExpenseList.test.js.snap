@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Expense List should render Expense list 1`] = `
+exports[`Expense List should render a Expense list 1`] = `
 <div>
   <h3>
     Expenses List
@@ -12,7 +12,7 @@ exports[`Expense List should render Expense list 1`] = `
     <tbody>
       <Connect(ExpenseListItem)
         amount={1000}
-        createdAt={"2019-12-09T07:19:47.074Z"}
+        createdAt={"2019-12-09T08:57:58.745Z"}
         description="Mobile"
         id="1"
         key="0"
@@ -28,13 +28,29 @@ exports[`Expense List should render Expense list 1`] = `
       />
       <Connect(ExpenseListItem)
         amount={2000}
-        createdAt={"2018-11-09T07:19:47.087Z"}
+        createdAt={"2018-11-09T08:57:58.754Z"}
         description="Headphone"
         id="3"
         key="2"
         note=""
       />
     </tbody>
+  </table>
+</div>
+`;
+
+exports[`Expense List should retrun no Expenses 1`] = `
+<div>
+  <h3>
+    Expenses List
+  </h3>
+  <Connect(NameFilterInput) />
+  <table
+    border="1"
+  >
+    <p>
+      No Expese
+    </p>
   </table>
 </div>
 `;
