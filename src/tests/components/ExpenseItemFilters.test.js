@@ -6,7 +6,11 @@ import { filters, altFilters } from '../fixtures/filters'
 let wrapper, filterByText, sortByDate, sortByAmount, setStartDate, setEndDate;
 beforeEach(() => {
   filterByText= jest.fn();
-  sortByDate, sortByAmount, setStartDate, setEndDate = jest.fn()
+  sortByDate= jest.fn();
+  sortByAmount = jest.fn();
+  setStartDate = jest.fn();
+  setEndDate = jest.fn();
+
 
   wrapper = shallow(
     <ExpenseItemFilters 
@@ -37,6 +41,27 @@ describe('Expense List Item Filters', () => {
       target: { value: text}
     });
     expect(filterByText).toHaveBeenLastCalledWith(text);
+  });
+
+  it('should default sort by date', () => {
+    wrapper.find('select').simulate('change', {
+      target: { value: ''}
+    });
+    expect(sortByAmount).toHaveBeenCalled();
+  })
+
+  it('should add sort by date', () => {
+    wrapper.find('select').simulate('change', {
+      target: { value: 'date'}
+    });
+    expect(sortByDate).toHaveBeenCalled();
+  })
+
+  it('should add sort by date', () => {
+    wrapper.find('select').simulate('change', {
+      target: { value: 'amount'}
+    });
+    expect(sortByAmount).toHaveBeenCalled();
   })
 
 })

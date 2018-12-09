@@ -5,9 +5,11 @@ exports[`Expense List Item Filters should show the Expense Item Filters Componen
   <input
     onChange={[Function]}
     type="text"
+    value=""
   />
   <select
     onChange={[Function]}
+    value="date"
   >
     <option
       value="date"
