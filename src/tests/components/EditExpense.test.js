@@ -9,11 +9,27 @@ beforeEach(() => {
   editExpense = jest.fn();
   deleteExpense = jest.fn()
   history = { push: jest.fn() };
-  wrapper = shallow(<EditExpense editExpense={editExpense} history={history} />)
+
+  wrapper = shallow(
+    <EditExpense 
+      editExpense={editExpense}
+      d 
+      history={history} 
+      expense={expenses[1]}
+    />
+    )
 });
 
 describe('Edit Expense', () => {
-  it('should show the Edit Expense Page Correctly', () => {
+  it('should show the Edit ExpensePage Correctly', () => {
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('should handle Edit Expense onSubmit', () => {
+    // const description = 'New Test Description';
+    wrapper.find(ExpenseForm).prop('onSubmit')(expenses[1]);
+
+    expect(history.push).toHaveBeenLastCalledWith('/');
+    expect(editExpense).toHaveBeenLastCalledWith(expenses[1].id, expenses[1])
+  })
 })

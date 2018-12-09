@@ -4,14 +4,14 @@ import ExpenseForm from './ExpenseForm';
 import { editExpense, deleteExpense } from '../../actions/expenses';
 
 export class EditExpense extends Component {
-  onSubmit = (updates) => (
+  onSubmit = (updates) => {
     this.props.editExpense(this.props.expense.id, updates);
-    this.props.history.push('/')
-  )
-  onRemove = () => (
+    this.props.history.push('/');
+  }
+  onRemove = () => {
     this.props.deleteExpense({ id: this.props.expense.id });
     this.props.history.push('/');
-  )
+  }
   render(){
     return(
       <div>
