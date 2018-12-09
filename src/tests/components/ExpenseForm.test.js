@@ -1,5 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import moment from 'moment';
+import { SingleDatePicker } from 'react-dates'
 import ExpenseForm from '../../components/expense/ExpenseForm';
 import expenses from '../fixtures/expenses';
 
@@ -17,7 +19,7 @@ describe('Expense Form', () => {
 
 describe('Expense Form Handlers', () => {
   let wrapper;
-  beforeEach(() => wrapper = shallow(<ExpenseForm />))
+  beforeEach(() => wrapper = shallow(<ExpenseForm />));
 
   it('should show an error while submitting the empty form', () => {
     expect(wrapper).toMatchSnapshot();
@@ -59,6 +61,28 @@ describe('Expense Form Handlers', () => {
       target: { value }
     });
     expect(wrapper.state('amount')).toBe('');
+  });
+
+  it('should set New Date onDateChange', () => {
+    const now = moment(); //it is already mocked
+    console.log(wrapper.find('SingleDatePicker'))
+    wrapper.find(SingleDatePicker).prop('onDateChange')(now);
+    expect(wrapper.state('createdAt')).toBe(now);
+  })
+
+});
+
+describe('On Submit Handler', () => {
+  it('should call handleSubmit prop for valid input', () => {
+    const onSubmitSpy = jest.fn() // the fake func
+    const wrapper = shallow(<ExpenseForm expense={expenses[0]} onSubmit={onSubmitSpy}/> );
+    wrapper.find('form').simulate('submit', {
+      preventDefault: () => {}
+    });
+
+    expect(wrapper.state('error')).toBe('');
+    let { description, amount, createdAt, note} = expenses[0];
+    expect(onSubmitSpy).toHaveBeenLastCalledWith({ description, amount, createdAt, note })
   });
 })
 
