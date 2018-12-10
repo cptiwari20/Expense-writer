@@ -1,8 +1,8 @@
 {
-  "name": "Indecision-App",
+  "name": "Expense Writer",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/cptiwari20/indecision-app.git",
+  "repository": "https://github.com/cptiwari20/expense-writer.git",
   "author": "cptiwari20",
   "license": "MIT",
   "scripts": {
