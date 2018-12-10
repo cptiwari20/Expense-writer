@@ -1,7 +1,9 @@
 const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = (env, argv) => {
   const isProduction = argv.mode === 'production';
+  const CSSExtract = new ExtractTextPlugin('style.css')
   return {
     mode: isProduction ? 'production' : 'development',
     entry: './src/app.js',
@@ -29,6 +31,9 @@ module.exports = (env, argv) => {
         ]
       }]
     },
+    plugins: [
+      CSSExtract
+    ],
     devtool: isProduction ? 'source-map' : 'cheap-module-eval-source-map',
     devServer: {
       contentBase: path.join(__dirname, 'public'),
