@@ -9,9 +9,15 @@ export const ExpenseListItem = ({dispatch, description, amount, note, createdAt,
     <Link to={`/edit/${id}`}>
      <h2>{description}</h2>
     </Link>
-    <h3>{amount}</h3>
+    <p>
+    {amount / 100}
+   /- Rupee(s) Only
+    -
+    <span>
+    {moment(createdAt).format('Do MMM YYYY')}</span>
+    </p>
     <p>{note}</p>
-    <span>{moment(createdAt).format('Do MMM YYYY')}</span>
+    
   </div>
 );
 

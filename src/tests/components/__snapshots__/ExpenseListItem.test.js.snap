@@ -10,12 +10,13 @@ exports[`Expense List Item should return a list Item 1`] = `
       Pen
     </h2>
   </Link>
-  <h3>
-    500
-  </h3>
+  <p>
+    5
+    /- Rupee(s) Only -
+    <span>
+      1st Jan 1970
+    </span>
+  </p>
   <p />
-  <span>
-    1st Jan 1970
-  </span>
 </div>
 `;
