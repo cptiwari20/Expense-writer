@@ -24,11 +24,22 @@ module.exports = (env, argv) => {
         }
       },{
         test: /\.s?css$/,
-        use: [
-          'style-loader', // templates CSS into normal JS
-          'css-loader', // creates style nodes from JS strings 
-          'sass-loader' // compiles the Sass to CSS by using the node-sass 
-        ]
+        use: CSSExtract.extract({
+          use: [
+            'style-loader', // templates CSS into normal JS
+            {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            } 
+          }, 
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true
+            } 
+          }]
+        })
       }]
     },
     plugins: [
