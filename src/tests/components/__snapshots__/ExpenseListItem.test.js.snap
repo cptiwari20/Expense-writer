@@ -1,36 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Expense List Item should return a list Item 1`] = `
-<tr>
-  <td>
-    <Link
-      replace={false}
-      to="/edit/2"
-    >
-      <h2>
-        Pen
-      </h2>
-    </Link>
-  </td>
-  <td>
-    <h3>
-      500
-    </h3>
-  </td>
-  <td>
-    <p />
-  </td>
-  <td>
-    <span>
-      1st Jan 1970
-    </span>
-  </td>
-  <td>
-    <button
-      onClick={[Function]}
-    >
-      Remove
-    </button>
-  </td>
-</tr>
+<div>
+  <Link
+    replace={false}
+    to="/edit/2"
+  >
+    <h2>
+      Pen
+    </h2>
+  </Link>
+  <h3>
+    500
+  </h3>
+  <p />
+  <span>
+    1st Jan 1970
+  </span>
+</div>
 `;
