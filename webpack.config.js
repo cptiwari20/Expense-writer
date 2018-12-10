@@ -8,7 +8,7 @@ module.exports = (env, argv) => {
     mode: isProduction ? 'production' : 'development',
     entry: './src/app.js',
     output: {
-      path: path.join(__dirname, 'public'),
+      path: path.join(__dirname, 'public', 'dist'),
       filename: 'bundle.js'
     },
     module: {
@@ -46,10 +46,11 @@ module.exports = (env, argv) => {
     plugins: [
       CSSExtract
     ],
-    devtool: isProduction ? 'source-map' : 'cheap-module-eval-source-map',
+    devtool: isProduction ? 'source-map' : 'inline-source-map',
     devServer: {
-      contentBase: path.join(__dirname, 'public'),
-      port: 5000
+      contentBase: [path.join(__dirname, 'public'), path.join(__dirname, 'dist')],
+      port: 5000,
+      publicPath: '/dist/'
     }
   }
 };
