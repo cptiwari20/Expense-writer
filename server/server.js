@@ -9,6 +9,8 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(publicPath, 'index.html'))
 })
 
-app.listen(3000, ()=> {
-  console.log('app is running')
+const port = process.env.PORT || 3000;
+
+app.listen(port, ()=> {
+  console.log('app is running at port:', port)
 })
