@@ -7,14 +7,21 @@ import 'normalize.css/normalize.css';
 import './styles/style.scss';
 import 'react-dates/lib/css/_datepicker.css';
 import './firebase/firebase';
-import moment from 'moment';
-
-
 const store = configureStore();
-import {addExpense} from './actions/expenses';
-store.dispatch(addExpense({description: 'Roommate', amount: 4000, note:'this is my second expense', createdAt: moment()}))
-store.dispatch(addExpense({description: 'mouse', amount: 350, note:'this is my second expense', createdAt: moment()}))
-store.dispatch(addExpense({description: 'reacharge', amount: 100, note:'this is my second expense', createdAt: moment()}))
+import firebase from 'firebase'
+const db = firebase.database();
+
+
+db.ref().set({
+  name: 'Cp Tiwari',
+  age: '24',
+  location: {
+    city: 'Jbp',
+    state: 'MP'
+  }
+});
+
+db.ref('location/state').set('Madhya Pradesh')
 
 ReactDOM.render(
   <Provider store={store}>
