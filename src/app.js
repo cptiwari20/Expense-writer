@@ -26,8 +26,9 @@ const db = firebase.database();
 //   console.log('Data Updates');
 // }).catch(e => console.log(e));
 
-db.ref().once('value').then((snapshot) => {
-  console.log(snapshot.val())
+db.ref().on('value', (snapshot) => {
+  let val = snapshot.val();
+  console.log(val.name);
 })
 
 ReactDOM.render(
