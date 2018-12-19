@@ -21,21 +21,26 @@ const db = firebase.database();
 
 // db.ref('expenses').push(expenses)
 
-db.ref('expenses')
-  .once('value')
-  .then((snapshot) => {
-    const expenses = []
-    snapshot.forEach((childSnapshot) => {
-      console.log(childSnapshot.val())
-      expenses.push({
-        id: childSnapshot.key,
-        ...childSnapshot.val()
-      })
-    })
+db.ref('expenses').on('child_removed', (snapshot) => {
+  console.log('ChildRemoved!!!', snapshot.val());
 
-    console.log(expenses)
-  })
-  .catch(e => console.log(e))
+})
+
+// db.ref('expenses')
+//   .once('value')
+//   .then((snapshot) => {
+//     const expenses = []
+//     snapshot.forEach((childSnapshot) => {
+//       console.log(childSnapshot.val())
+//       expenses.push({
+//         id: childSnapshot.key,
+//         ...childSnapshot.val()
+//       })
+//     })
+
+//     console.log(expenses)
+//   })
+//   .catch(e => console.log(e))
 
 
 ReactDOM.render(
