@@ -12,17 +12,19 @@ import firebase from 'firebase'
 const db = firebase.database();
 
 
-db.ref().set({
-  name: 'Cp Tiwari',
-  age: '24',
-  location: {
-    city: 'Jbp',
-    state: 'MP'
-  }
-});
+// db.ref().set({
+//   name: 'Cp Tiwari',
+//   age: '24',
+//   location: {
+//     city: 'Jbp',
+//     state: 'MP'
+//   }
+// });
 
 // db.ref('location/state').set('Madhya Pradesh')
-db.ref('name').remove();
+db.ref('name').remove().then(() => {
+  console.log('Deleted Data');
+}).catch(e => console.log(e));
 
 ReactDOM.render(
   <Provider store={store}>
