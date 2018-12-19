@@ -22,8 +22,8 @@ const db = firebase.database();
 // });
 
 // db.ref('location/state').set('Madhya Pradesh')
-db.ref('name').remove().then(() => {
-  console.log('Deleted Data');
+db.ref().update({ name: 'Vikas Tiwari', "location/city": "Katni"}).then(() => {
+  console.log('Data Updates');
 }).catch(e => console.log(e));
 
 ReactDOM.render(
