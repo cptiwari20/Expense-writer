@@ -21,9 +21,8 @@ const db = firebase.database();
 
 // db.ref('expenses').push(expenses)
 
-db.ref('expenses').on('child_removed', (snapshot) => {
-  console.log('ChildRemoved!!!', snapshot.val());
-
+db.ref('expenses').on('child_added', (snapshot) => {
+  console.log('ChildAdded!!!', snapshot.val());
 })
 
 // db.ref('expenses')
