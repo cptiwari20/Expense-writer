@@ -22,9 +22,13 @@ const db = firebase.database();
 // });
 
 // db.ref('location/state').set('Madhya Pradesh')
-db.ref().update({ name: 'Vikas Tiwari', "location/city": "Katni"}).then(() => {
-  console.log('Data Updates');
-}).catch(e => console.log(e));
+// db.ref().update({ name: 'Vikas Tiwari', "location/city": "Katni"}).then(() => {
+//   console.log('Data Updates');
+// }).catch(e => console.log(e));
+
+db.ref().once('value').then((snapshot) => {
+  console.log(snapshot.val())
+})
 
 ReactDOM.render(
   <Provider store={store}>
