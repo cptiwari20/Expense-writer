@@ -28,8 +28,16 @@ const db = firebase.database();
 
 db.ref().on('value', (snapshot) => {
   let val = snapshot.val();
-  console.log(val.name);
-})
+  console.log(val);
+});
+
+setTimeout(()=> {
+  db.ref('age').set('23')
+}, 10000);
+
+setTimeout(()=> {
+  db.ref().update({'location/city': 'Barhi'})
+}, 11000)
 
 ReactDOM.render(
   <Provider store={store}>
