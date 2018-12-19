@@ -26,17 +26,20 @@ const db = firebase.database();
 //   console.log('Data Updates');
 // }).catch(e => console.log(e));
 
-db.ref().on('value', (snapshot) => {
+const onVC = db.ref().on('value', (snapshot) => {
   let val = snapshot.val();
   console.log(val);
 });
 
-setTimeout(()=> {
-  db.ref('age').set('23')
-}, 10000);
+// setTimeout(()=> {
+//   db.ref('age').set('22');
+// }, 10000);
+db.ref().off(onVC);
+
+
 
 setTimeout(()=> {
-  db.ref().update({'location/city': 'Barhi'})
+  db.ref().update({'location/city': 'Barhi Madhya Pradesh'})
 }, 11000)
 
 ReactDOM.render(
