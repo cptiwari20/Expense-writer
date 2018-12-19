@@ -21,7 +21,8 @@ db.ref().set({
   }
 });
 
-db.ref('location/state').set('Madhya Pradesh')
+// db.ref('location/state').set('Madhya Pradesh')
+db.ref('name').remove();
 
 ReactDOM.render(
   <Provider store={store}>
