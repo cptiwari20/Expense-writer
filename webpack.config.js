@@ -3,14 +3,11 @@ const MiniExtractCSSPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development'; // if no defined env then it will be dev mode
-
-switch (process.env.NODE_ENV) {
-  case 'test':
-    return require('dotenv').config({ path: '.env.test'})
-  case 'development': 
-    return require('dotenv').config({ path: '.env.development'})
-  default:
-    break;
+ 
+if(process.env.NODE_ENV === 'test'){
+  require('dotenv').config({ path: '.env.test'})
+} else if(process.env.NODE_ENV === 'development'){
+  require('dotenv').config({ path: '.env.development'})
 }
 
 module.exports = (env, argv) => {
