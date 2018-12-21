@@ -4,6 +4,4 @@ public/dist/
 .env.test
 .env.development
 
-
 yarn-error.log
-firebase.js
