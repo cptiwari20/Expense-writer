@@ -50,6 +50,7 @@
     "live-server": "^1.2.1",
     "node-sass": "^4.10.0",
     "react-test-renderer": "^16.6.3",
+    "redux-mock-store": "^1.5.3",
     "regenerator-runtime": "^0.13.1",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10"
