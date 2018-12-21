@@ -25,6 +25,7 @@ describe('Expense ACTIONS', () => {
   })
 
   describe('ADD-Expense', () => {
+
     it('should return an action Type "ADD_EXPENSE"', () => {
       const expense = expenses[0]
       const action = addExpense(expense);
@@ -58,7 +59,36 @@ describe('Expense ACTIONS', () => {
       done();
     })
 
+    });
+
+    it('should add expenses to database and store with default value', (done) => {
+      const store = createMockStore({});
+
+      const expenseData = {
+        description: '',
+        amount: 0,
+        createdAt: 0,
+        note: ''
+      };
+
+     store.dispatch(startAddExpense()).then(() => {
+      const actions = store.getActions();
+      expect(actions[0]).toEqual({
+        type: 'ADD_EXPENSE',
+        payload: {
+          id: expect.any(String),
+          ...expenseData
+        }
+      });
+      return db.ref(`expenses/${actions[0].payload.id}`).once('value');
+
+    }).then((snapshot) => {
+      expect(snapshot.val()).toEqual(expenseData);
+      done();
     })
+
+    });
+
   })
 
 })
