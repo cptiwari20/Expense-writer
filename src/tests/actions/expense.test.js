@@ -2,7 +2,8 @@ import configureReduxMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { 
   addExpense,
-  editExpense, 
+  editExpense,
+  startEditExpense,
   deleteExpense, 
   startDeleteExpense,
   startAddExpense, 
@@ -25,12 +26,35 @@ beforeEach((done) => {
 })
 
 describe('Expense ACTIONS', () => {
-  it('should return an action Type "EDIT_EXPENSE"', () => {
-    const expense = expenses[0]
-    const id = '123abc'
-    const action = editExpense(id, expense);
-    expect(action.payload).toEqual({ id, updates: expense});
-    expect(action.type).toBe('EDIT_EXPENSE');
+  
+  describe('EDIT- Expense', ()=> {
+    it('should return an action Type "EDIT_EXPENSE"', () => {
+      const expense = expenses[0]
+      const id = '123abc'
+      const action = editExpense(id, expense);
+      expect(action.payload).toEqual({ id, updates: expense});
+      expect(action.type).toBe('EDIT_EXPENSE');
+    });
+
+    it('should update the data in firebase', (done) => {
+      const store = createMockStore({});
+
+      const id = expenses[1].id;
+      const updateExpense = { description: 'Pencil', amount: 2520 };
+      store.dispatch(startEditExpense(id, updateExpense)).then(() => {
+        const actions = store.getActions();
+        expect(actions[0]).toEqual({
+          type: 'EDIT_EXPENSE',
+          payload: { id, updates: updateExpense }
+        })
+        return db.ref(`expenses/${id}`).once('value');
+      }).then(snapshot => {
+        expect(snapshot.val().description).toBe(updateExpense.description);
+        expect(snapshot.val().amount).toBe(updateExpense.amount);
+        done();
+      });
+    })
+
   })
 
   describe('ADD-Expense', () => {
