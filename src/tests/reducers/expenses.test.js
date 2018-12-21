@@ -1,4 +1,5 @@
 import expenseReducer from "../../reducers/expenses";
+import expenses from '../fixtures/expenses';
 
 describe('EXPENSE REDUCERS', () => {
   it('should return default state with unknown action type', () => {
@@ -36,5 +37,12 @@ describe('EXPENSE REDUCERS', () => {
        amount: 100
       }
     ]);
+  });
+
+  it('should set expenses', () => {
+    const action = { type: 'SET_EXPENSES', payload: [ expenses[0] ]}
+    const newState = expenseReducer(expenses, action);
+
+    expect(newState).toEqual([ expenses[0] ])
   })
 })
