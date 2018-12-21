@@ -41,3 +41,15 @@ export const editExpense = (id, updates)=> {
     }
   }
 };
+
+// set expense'
+export const setExpense = (expenses) => (
+  {
+    type: 'SET_EXPENSE',
+    payload: expenses
+  }
+);
+
+// export const startSetExpense = () => {
+
+// }
