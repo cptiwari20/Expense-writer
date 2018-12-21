@@ -1,4 +1,5 @@
-import { addExpense, editExpense, deleteExpense } from '../../actions/expenses';
+import { addExpense, editExpense, deleteExpense, startAddExpense } from '../../actions/expenses';
+import expenses from '../fixtures/expenses';
 
 describe('Expense ACTIONS', () => {
   it('should return an action Type "DELETE_EXPENSE" ', () => {
@@ -11,7 +12,7 @@ describe('Expense ACTIONS', () => {
   });
 
   it('should return an action Type "EDIT_EXPENSE"', () => {
-    const expense = { description: 'Reacharge', note: 'This is a test expense', amount: 1000, createdAt: 1213456}
+    const expense = expenses[0]
     const id = '123abc'
     const action = editExpense(id, expense);
     expect(action.payload).toEqual({ id, updates: expense});
@@ -19,16 +20,10 @@ describe('Expense ACTIONS', () => {
   })
 
   it('should return an action Type "ADD_EXPENSE"', () => {
-    const expense = { description: 'Reacharge', note: 'This is a test expense', amount: 1000, createdAt: 1213456}
+    const expense = expenses[0]
     const action = addExpense(expense);
-    expect(action.payload).toEqual({ id: expect.any(String), ...expense});
+    expect(action.payload).toEqual({ ...expense });
     expect(action.type).toBe('ADD_EXPENSE');
   });
-
-  it('should return an action with default value with addExpense', () => {
-    const action = addExpense();
-    expect(action.type).toBe('ADD_EXPENSE');
-    expect(action.payload).toEqual({id: expect.any(String), description: '', note: '', amount: 0, createdAt: 0})
-  })
 
 })

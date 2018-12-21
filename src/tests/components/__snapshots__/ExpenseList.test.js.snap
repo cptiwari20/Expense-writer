@@ -6,36 +6,30 @@ exports[`Expense List should render a Expense list 1`] = `
     Expenses List
   </h3>
   <Connect(ExpenseItemFilters) />
-  <table
-    border="1"
-  >
-    <tbody>
-      <Connect(ExpenseListItem)
-        amount={1000}
-        createdAt={345600000}
-        description="Mobile"
-        id="1"
-        key="0"
-        note=""
-      />
-      <Connect(ExpenseListItem)
-        amount={500}
-        createdAt={0}
-        description="Pen"
-        id="2"
-        key="1"
-        note=""
-      />
-      <Connect(ExpenseListItem)
-        amount={2000}
-        createdAt={-432000000}
-        description="Headphone"
-        id="3"
-        key="2"
-        note=""
-      />
-    </tbody>
-  </table>
+  <Connect(ExpenseListItem)
+    amount={1000}
+    createdAt={345600000}
+    description="Mobile"
+    id="1"
+    key="0"
+    note=""
+  />
+  <Connect(ExpenseListItem)
+    amount={500}
+    createdAt={0}
+    description="Pen"
+    id="2"
+    key="1"
+    note=""
+  />
+  <Connect(ExpenseListItem)
+    amount={2000}
+    createdAt={-432000000}
+    description="Headphone"
+    id="3"
+    key="2"
+    note=""
+  />
 </div>
 `;
 
@@ -45,12 +39,8 @@ exports[`Expense List should retrun no Expenses 1`] = `
     Expenses List
   </h3>
   <Connect(ExpenseItemFilters) />
-  <table
-    border="1"
-  >
-    <p>
-      No Expese
-    </p>
-  </table>
+  <p>
+    No Expese
+  </p>
 </div>
 `;
