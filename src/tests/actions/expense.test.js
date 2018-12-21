@@ -4,7 +4,15 @@ import { addExpense, editExpense, deleteExpense, startAddExpense } from '../../a
 import expenses from '../fixtures/expenses';
 import db from '../../firebase/firebase';
 
-const createMockStore = configureReduxMockStore([ thunk ])
+const createMockStore = configureReduxMockStore([ thunk ]);
+
+beforeEach((done) => {
+  const expenseData = {};
+  expenses.forEach(({ id, description, createdAt, note, amount }) => {
+    expenseData[id] = { description, createdAt, note, amount  }
+  });
+  db.ref('expenses').set(expenseData).then(() => done())
+})
 
 describe('Expense ACTIONS', () => {
   it('should return an action Type "DELETE_EXPENSE" ', () => {
