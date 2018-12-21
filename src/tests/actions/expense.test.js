@@ -1,6 +1,6 @@
 import configureReduxMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { addExpense, editExpense, deleteExpense, startAddExpense } from '../../actions/expenses';
+import { addExpense, editExpense, deleteExpense, startAddExpense, setExpenses } from '../../actions/expenses';
 import expenses from '../fixtures/expenses';
 import db from '../../firebase/firebase';
 
@@ -97,6 +97,13 @@ describe('Expense ACTIONS', () => {
 
     });
 
-  })
+  });
 
+  describe('SET EXPENSES', () => {
+    it('should set Expense action object with data', () => {
+      const action = setExpenses(expenses);
+      expect(action.payload).toEqual(expenses);
+      expect(action.type).toBe('SET_EXPENSES')
+    })
+  })
 })
