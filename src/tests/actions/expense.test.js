@@ -1,6 +1,16 @@
 import configureReduxMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { addExpense, editExpense, deleteExpense, startAddExpense, setExpenses, startSetExpense } from '../../actions/expenses';
+import { 
+  addExpense,
+  editExpense, 
+  deleteExpense, 
+  startDeleteExpense,
+  startAddExpense, 
+  setExpenses, 
+  startSetExpense
+ } from '../../actions/expenses';
+
+
 import expenses from '../fixtures/expenses';
 import db from '../../firebase/firebase';
 
@@ -15,15 +25,6 @@ beforeEach((done) => {
 })
 
 describe('Expense ACTIONS', () => {
-  it('should return an action Type "DELETE_EXPENSE" ', () => {
-    const id = '123xyz'
-    const action = deleteExpense(id);
-    expect(action).toEqual({
-      type: 'DELETE_EXPENSE',
-      id
-    })
-  });
-
   it('should return an action Type "EDIT_EXPENSE"', () => {
     const expense = expenses[0]
     const id = '123abc'
@@ -106,17 +107,49 @@ describe('Expense ACTIONS', () => {
       expect(action.type).toBe('SET_EXPENSES')
     });
 
-    it('should fetch the data from db and send to the Set expense action creator', () => {
+    it('should fetch the data from db and send to the Set expense action creator', (done) => {
         const store = createMockStore({});
 
         store.dispatch(startSetExpense()).then(() => {
           const actions = store.getActions();
           expect(actions[0]).toEqual({
             type: 'SET_EXPENSES',
-            payload: expenseData
+            payload: expenses
           });
           done();
         })
     })
+  });
+
+  describe('DELETE Expense', () => {
+    it('should return an action Type "DELETE_EXPENSE" ', () => {
+      const id = '123xyz'
+
+      const action = deleteExpense({id});
+
+      expect(action).toEqual({
+        type: 'DELETE_EXPENSE',
+        id
+      })
+    });
+
+    it('should delete the expense from the firebase', (done) => {
+      const store = createMockStore({});
+
+      const id = expenses[2].id;
+
+      store.dispatch(startDeleteExpense({ id })).then(() => {
+        const actions = store.getActions();
+        expect(actions[0]).toEqual({
+          type: 'DELETE_EXPENSE',
+          id
+        });
+        return db.ref(`expenses/${id}`).once('value');
+      }).then(snapshot => {
+        expect(snapshot.val()).toBeFalsy();
+        done();
+      });
+    })
+
   })
 })

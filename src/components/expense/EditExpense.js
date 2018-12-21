@@ -9,7 +9,7 @@ export class EditExpense extends Component {
     this.props.history.push('/');
   }
   onRemove = () => {
-    this.props.startDeleteExpense(this.props.expense.id);
+    this.props.startDeleteExpense({ id: this.props.expense.id });
     this.props.history.push('/');
   }
   render(){

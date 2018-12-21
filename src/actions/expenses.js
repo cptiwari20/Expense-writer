@@ -26,16 +26,16 @@ export const startAddExpense = (expenseData = {} ) => dispatch => {
     
 };
 
-export const deleteExpense = (id) => {
+export const deleteExpense = ({ id }) => {
   return {
     type: 'DELETE_EXPENSE',
     id
   }
 };
 
-export const startDeleteExpense = id => dispatch => {
-  db.ref(`expenses/${id}`).remove().then(() => {
-    dispatch(deleteExpense(id))
+export const startDeleteExpense = ({ id } = {}) => dispatch => {
+  return db.ref(`expenses/${id}`).remove().then(() => {
+    dispatch(deleteExpense({ id }))
   })
 }
 
