@@ -1,19 +1,31 @@
-import uuid from 'uuid';
+import db from '../firebase/firebase';
 
 // add expense action Creator
-export const addExpense = ({
-  description= '',
-  note= '',
-  amount= 0,
-  createdAt=0
-} = {})=> {
+export const addExpense = (expense) => {
   return {
     type: 'ADD_EXPENSE',
-    payload: {
-      description, amount, note, createdAt, id: uuid()
-    }
+    payload: expense
   }
 };
+
+export const startAddExpense = (expenseData = {} ) => dispatch => {
+    const {
+      description= '',
+      note= '',
+      amount= 0,
+      createdAt=0
+    } = expenseData;
+
+    const expense = { description, note, amount, createdAt };
+    db.ref('expenses').push(expense).then((ref) => {
+      dispatch(addExpense({
+        id: ref.key,
+        ...expense
+      }));
+    }).catch(e => console.log('Not added to db', e))
+    
+};
+
 export const deleteExpense = (id) => {
   return {
     type: 'DELETE_EXPENSE',
