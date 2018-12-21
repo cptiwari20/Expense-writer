@@ -15,6 +15,8 @@ export default ( state = [], action) =>{
       })
     case 'DELETE_EXPENSE': 
       return state.filter(({id}) => id !== action.id);
+    case 'SET_EXPENSE': 
+      return action.payload.expenses
     default:
       return state;
   }

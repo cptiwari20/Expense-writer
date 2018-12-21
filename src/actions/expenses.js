@@ -43,9 +43,9 @@ export const editExpense = (id, updates)=> {
 };
 
 // set expense'
-export const setExpense = (expenses) => (
+export const setExpenses = (expenses) => (
   {
-    type: 'SET_EXPENSE',
+    type: 'SET_EXPENSES',
     payload: expenses
   }
 );
