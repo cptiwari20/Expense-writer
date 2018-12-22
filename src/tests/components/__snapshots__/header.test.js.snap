@@ -54,7 +54,7 @@ exports[`should render Header correctly 1`] = `
     </li>
     <li>
       <button
-        onClick={[Function]}
+        onClick={[MockFunction]}
       >
         Log Out
       </button>
