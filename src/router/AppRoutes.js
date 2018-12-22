@@ -16,9 +16,9 @@ const AppRoutes = () => (
       <Switch>
         <Route path='/edit/:id' component={EditExpense} />
         <Route path="/about" component={About} />
-        <Route path="/login" component={LoginPage} />
         <Route path='/add-expense' component={AddExpense} />
-        <Route path='/' component={Dashboard} exact/>
+        <Route path='/dashboard' component={Dashboard} exact/>
+        <Route path="/" component={LoginPage} exact />
         <Route component={ErrorPage} />
       </Switch>
     </div>
