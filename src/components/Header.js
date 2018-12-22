@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { startSignOut } from '../actions/auth';
 
-const Header = (props) => (
+export const Header = (props) => (
   <nav>
     <h1>Expense Writer</h1>
     <ul>

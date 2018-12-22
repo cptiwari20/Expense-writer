@@ -1,10 +1,10 @@
 import React from "react";
 import { shallow } from 'enzyme';
 // import  toJson from "enzyme-to-json";
-import Header from "../../components/Header";
+import { Header } from "../../components/Header";
 
 it('should render Header correctly', () => {
-  const wrapper = shallow(<Header />);
+  const wrapper = shallow(<Header startSignOut={() => {}} />);
   expect(wrapper).toMatchSnapshot()
 })
 
