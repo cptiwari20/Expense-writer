@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login Page should render a loginPage Component 1`] = `
+<div>
+  <button>
+     Login With Google 
+  </button>
+</div>
+`;
