@@ -1,5 +1,7 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
+import createHistory from 'history/createBrowserHistory';
+
 
 import Header from "../components/Header";
 import Dashboard from "../components/Dashboard";
@@ -9,8 +11,10 @@ import About from "../components/About";
 import EditExpense from '../components/expense/EditExpense';
 import LoginPage from '../components/LoginPage';
 
+export const history = createHistory();
+
 const AppRoutes = () => (
-  <BrowserRouter>
+  <Router history={history}>
   <div>
     <Header />
       <Switch>
@@ -22,7 +26,7 @@ const AppRoutes = () => (
         <Route component={ErrorPage} />
       </Switch>
     </div>
-  </BrowserRouter>
+  </Router>
 )
 
 export default AppRoutes;
