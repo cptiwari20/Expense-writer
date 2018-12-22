@@ -7,6 +7,7 @@ import ErrorPage from "../components/ErrorPage";
 import AddExpense from '../components/expense/AddExpense';
 import About from "../components/About";
 import EditExpense from '../components/expense/EditExpense';
+import LoginPage from '../components/LoginPage';
 
 const AppRoutes = () => (
   <BrowserRouter>
@@ -15,6 +16,7 @@ const AppRoutes = () => (
       <Switch>
         <Route path='/edit/:id' component={EditExpense} />
         <Route path="/about" component={About} />
+        <Route path="/login" component={LoginPage} />
         <Route path='/add-expense' component={AddExpense} />
         <Route path='/' component={Dashboard} exact/>
         <Route component={ErrorPage} />
