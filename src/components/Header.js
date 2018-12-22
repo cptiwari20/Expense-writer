@@ -1,12 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { startSignOut } from '../actions/auth';
 
-const Header = () => (
+const Header = (props) => (
   <nav>
     <h1>Expense Writer</h1>
     <ul>
       <li>
-        <NavLink to='/'  activeStyle={{
+        <NavLink to='/dashboard'  activeStyle={{
           fontWeight: "bold",
           color: "red"
         }}
@@ -31,9 +33,10 @@ const Header = () => (
         </NavLink>
       </li>
       <li>
+        <button onClick={props.startSignOut}>Log Out</button>
       </li>
     </ul>
   </nav>
 );
 
-export default Header;
+export default connect(null, { startSignOut })(Header);
