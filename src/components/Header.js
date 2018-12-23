@@ -8,7 +8,7 @@ export const Header = (props) => (
     <h1>Expense Writer</h1>
     <ul>
       <li>
-        <NavLink to='/dashboard'  activeStyle={{
+        <NavLink to='/'  activeStyle={{
           fontWeight: "bold",
           color: "red"
         }}
