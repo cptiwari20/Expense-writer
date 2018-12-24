@@ -15,11 +15,17 @@ export class EditExpense extends Component {
   render(){
     return(
       <div>
-        <h2>Edit your Expense</h2>
-        <ExpenseForm 
-            expense={this.props.expense}
-            onSubmit = { this.onSubmit }  />
-        <button onClick={this.onRemove}>Remove Expense</button>
+        <div className='page-header'>
+          <div className='content-container'>
+            <h1 className='page-header__title'>Edit your Expense</h1>
+          </div>
+        </div>
+        <div className='content-container'>
+          <ExpenseForm 
+              expense={this.props.expense}
+              onSubmit = { this.onSubmit }  />
+          <button className='button button--secondary' onClick={this.onRemove}>Remove Expense</button>
+        </div>
       </div>
     )
   }
