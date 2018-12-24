@@ -21,23 +21,31 @@ export class ExpenseItemFilters extends Component{
   }
 
   render(){
-    const {dispatch, filters} = this.props
+    const { filters} = this.props
     return (
-      <div>
-        <input 
-          type='text'
-          value={filters.text}
-          onChange={ this.onTextInputChange }
-        />
-        <select 
-          value={filters.sortBy}
-          onChange={ this.onSelectOptionChange }
-        >
-          <option value='date'>Date</option>
-          <option value='amount'>Amount</option>
-        </select>
-
-        <DateRangePicker
+      <div className='content-container'>
+        <div className='input-group'>
+          <div className='input-group__item'>
+            <input 
+              className='text-input'
+              type='text'
+              value={filters.text}
+              onChange={ this.onTextInputChange }
+              placeholder='Search Expenses'
+            />
+          </div>
+          <div className='input-group__item'>
+            <select
+              className='text-input select' 
+              value={filters.sortBy}
+              onChange={ this.onSelectOptionChange }
+              >
+              <option value='date'>Date</option>
+              <option value='amount'>Amount</option>
+            </select>
+          </div>
+          <div className='input-group__item'>
+          <DateRangePicker
             startDate={filters.startDate}
             startDateId="month 1"
             endDate={filters.endDate}
@@ -46,8 +54,11 @@ export class ExpenseItemFilters extends Component{
             focusedInput={this.state.focusedInput} 
             onFocusChange={focusedInput => this.setState({ focusedInput })}
             numberOfMonths={1}
+            showClearDates={true}
             isOutsideRange={() => false}
           />
+          </div>        
+        </div> 
       </div>
     );
   }
