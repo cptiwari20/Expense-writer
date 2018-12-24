@@ -9,7 +9,7 @@ export const Header = (props) => (
       <div className='header__container'>
         <Link to='/' 
           className="header__title"
-          exact={true}>
+        >
             <h1>Expense Writer</h1>
         </Link>
        <div>
@@ -17,7 +17,7 @@ export const Header = (props) => (
           About 
         </Link>
         <button 
-          className='button'
+          className='button button--link'
           onClick={props.startSignOut}>
           Log Out
         </button>
