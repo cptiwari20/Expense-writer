@@ -5,12 +5,12 @@ import AppRoutes from './router/AppRoutes';
 import configureStore from './store/configureStore';
 import { startSetExpense } from './actions/expenses'
 import { login, logout } from './actions/auth';
-
+import { firebase } from './firebase/firebase';
+import { history } from './router/AppRoutes';
+import LoadingPage from './components/LoadingPage';
 import 'normalize.css/normalize.css';
 import './styles/style.scss';
 import 'react-dates/lib/css/_datepicker.css';
-import { firebase } from './firebase/firebase';
-import { history } from './router/AppRoutes';
 
 const store = configureStore();
 const JSX =
@@ -25,7 +25,7 @@ const renderApp = () => {
     hasRendered = true;
   }
 }
-ReactDOM.render(<p>Loading</p>, document.querySelector('#app'));
+ReactDOM.render(<LoadingPage />, document.querySelector('#app'));
 
 firebase.auth().onAuthStateChanged(user => {
   if(user){
