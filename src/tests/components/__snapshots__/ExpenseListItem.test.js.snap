@@ -1,22 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Expense List Item should return a list Item 1`] = `
-<div>
-  <Link
-    replace={false}
-    to="/edit/2"
-  >
-    <h2>
+<Link
+  className="list-item"
+  replace={false}
+  to="/edit/2"
+>
+  <div>
+    <h2
+      className="list-item__title"
+    >
       Pen
     </h2>
-  </Link>
-  <p>
-    5
-    /- Rupee(s) Only -
-    <span>
+    <span
+      className="list-item__subtitle"
+    >
       1st Jan 1970
     </span>
-  </p>
-  <p />
-</div>
+    <p
+      className="list-item__subtitle"
+    />
+  </div>
+  <h2
+    className="list-item__amount"
+  >
+    5
+    /- Rupee(s)
+  </h2>
+</Link>
 `;

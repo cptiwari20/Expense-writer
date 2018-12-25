@@ -1,11 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Login Page should render a loginPage Component 1`] = `
-<div>
-  <button
-    onClick={[MockFunction]}
+<div
+  className="box-layout"
+>
+  <div
+    className="box-layout__box"
   >
-     Login With Google 
-  </button>
+    <h1
+      className="box-layout__title"
+    >
+      Expense Writer
+    </h1>
+    <p>
+      Write and manage your expenses anytime and anywhere.
+    </p>
+    <button
+      className="button"
+      onClick={[MockFunction]}
+    >
+      Login With Google
+    </button>
+  </div>
 </div>
 `;

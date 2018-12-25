@@ -1,64 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render Header correctly 1`] = `
-<nav>
-  <h1>
-    Expense Writer
-  </h1>
-  <ul>
-    <li>
-      <NavLink
-        activeClassName="active"
-        activeStyle={
-          Object {
-            "color": "red",
-            "fontWeight": "bold",
-          }
-        }
-        aria-current="page"
-        exact={true}
+<header
+  className="header"
+>
+  <div
+    className="content-container"
+  >
+    <div
+      className="header__container"
+    >
+      <Link
+        className="header__title"
+        replace={false}
         to="/"
       >
-        Dashboard
-      </NavLink>
-    </li>
-    <li>
-      <NavLink
-        activeClassName="active"
-        activeStyle={
-          Object {
-            "color": "red",
-            "fontWeight": "bold",
-          }
-        }
-        aria-current="page"
-        to="/add-expense"
-      >
-        Create
-      </NavLink>
-    </li>
-    <li>
-      <NavLink
-        activeClassName="active"
-        activeStyle={
-          Object {
-            "color": "red",
-            "fontWeight": "bold",
-          }
-        }
-        aria-current="page"
-        to="/about"
-      >
-        About
-      </NavLink>
-    </li>
-    <li>
-      <button
-        onClick={[MockFunction]}
-      >
-        Log Out
-      </button>
-    </li>
-  </ul>
-</nav>
+        <h1>
+          Expense Writer
+        </h1>
+      </Link>
+      <div>
+        <Link
+          className="header__link"
+          replace={false}
+          to="/about"
+        >
+          About
+        </Link>
+        <button
+          className="button button--link"
+          onClick={[MockFunction]}
+        >
+          Log Out
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
 `;

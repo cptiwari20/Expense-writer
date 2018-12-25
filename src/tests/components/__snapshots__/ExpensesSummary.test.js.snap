@@ -1,25 +1,71 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Expenses Summary should render a Expenses Summary with expenses 1`] = `
-<div>
-  <h2>
-    Showing 
-    3
-     expense(s), totalling 
-    35
-     Rupees.
-  </h2>
+<div
+  className="page-header"
+>
+  <div
+    className="content-container"
+  >
+    <h1
+      className="page-header__title"
+    >
+      Showing 
+      <span>
+        3
+      </span>
+       expense(s), totalling 
+      <span>
+        35
+      </span>
+       Rupees.
+    </h1>
+    <div
+      className="page-header__actions"
+    >
+      <Link
+        className="button"
+        replace={false}
+        to="/add-expense"
+      >
+        Create New Expense
+      </Link>
+    </div>
+  </div>
 </div>
 `;
 
 exports[`Expenses Summary should render a Expenses Summary with no expense 1`] = `
-<div>
-  <h2>
-    Showing 
-    0
-     expense(s), totalling 
-    0
-     Rupees.
-  </h2>
+<div
+  className="page-header"
+>
+  <div
+    className="content-container"
+  >
+    <h1
+      className="page-header__title"
+    >
+      Showing 
+      <span>
+        0
+      </span>
+       expense(s), totalling 
+      <span>
+        0
+      </span>
+       Rupees.
+    </h1>
+    <div
+      className="page-header__actions"
+    >
+      <Link
+        className="button"
+        replace={false}
+        to="/add-expense"
+      >
+        Create New Expense
+      </Link>
+    </div>
+  </div>
 </div>
 `;
