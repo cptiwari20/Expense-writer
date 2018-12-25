@@ -1,4 +1,3 @@
 # Expense-writer
 An expense calculator app.
-
-#coming SOon#
+Manage Your Expenses anywhere anytime
